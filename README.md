@@ -4,18 +4,28 @@ Automated security configuration for GitHub repositories. Never manually configu
 
 ## 🚀 Quick Start
 
-### One-Line Install
+### Installation on New Computers
+
+Since this is a **private repository**, use manual installation:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/AbrahamOO/dotfiles/main/install.sh | bash
-```
+# Clone the repository
+git clone git@github.com:AbrahamOO/dotfiles.git ~/dotfiles
 
-### Manual Install
-
-```bash
-git clone https://github.com/AbrahamOO/dotfiles.git ~/dotfiles
+# Run the installer
 cd ~/dotfiles
 ./install.sh
+
+# Authenticate with GitHub
+gh auth login
+```
+
+### Installation on Current Computer
+
+Already installed at `~/dotfiles`. To activate:
+
+```bash
+source ~/.zshrc
 ```
 
 ## 📋 What's Included
@@ -78,14 +88,21 @@ secure-repo AbrahamOO/my-existing-repo
 repo-help
 ```
 
-## 🔐 Security Considerations
+## 🔐 Security & Privacy
+
+### Repository Privacy
+
+This dotfiles repository is **PRIVATE** because:
+- Contains your personal automation preferences
+- Only you need access to it
+- Still contains NO credentials or secrets
 
 ### What's Safe
 
-✅ All scripts in this repository contain **NO credentials**
+✅ All scripts contain **NO credentials**
 ✅ No API tokens, passwords, or secrets
 ✅ Only automation logic
-✅ Safe to share publicly
+✅ Authentication handled by GitHub CLI
 
 ### How Authentication Works
 
@@ -107,6 +124,7 @@ repo-help
 - **GitHub CLI** - Install with `brew install gh` (macOS) or [follow instructions](https://cli.github.com/)
 - **Git** - Usually pre-installed
 - **Bash/Zsh** - Standard on macOS/Linux
+- **SSH access** to GitHub (for cloning private repo)
 
 ## 🎯 Who This Is For
 
@@ -135,7 +153,7 @@ nano ~/dotfiles/create-secure-repo.sh
 cat ~/dotfiles/.github-repo-defaults.yml
 ```
 
-## 🔄 Updating
+## 🔄 Updating Across All Computers
 
 ```bash
 cd ~/dotfiles
@@ -163,14 +181,15 @@ $ secure-repo
 # Applies branch protection and security settings
 ```
 
-### Example 3: Multiple Computers
+### Example 3: New Computer Setup
 
 ```bash
 # On new computer
-$ git clone https://github.com/AbrahamOO/dotfiles.git ~/dotfiles
+$ git clone git@github.com:AbrahamOO/dotfiles.git ~/dotfiles
 $ cd ~/dotfiles && ./install.sh
 $ gh auth login
-$ new-secure-repo another-project
+$ source ~/.zshrc
+$ new-secure-repo another-project "Testing on new computer"
 ```
 
 ## 🐛 Troubleshooting
@@ -199,29 +218,27 @@ chmod +x ~/dotfiles/*.sh
 - Verify you have admin access
 - Check that branch exists (make initial commit first)
 
+### Can't clone dotfiles on new computer?
+
+Make sure you have SSH access configured:
+```bash
+# Generate SSH key if needed
+ssh-keygen -t ed25519 -C "your_email@example.com"
+
+# Add to GitHub
+cat ~/.ssh/id_ed25519.pub
+# Copy and add at: https://github.com/settings/keys
+```
+
 ## 📖 Documentation
 
 - [GitHub Branch Protection](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)
 - [GitHub CLI Manual](https://cli.github.com/manual/)
 - [Branch Protection API](https://docs.github.com/en/rest/branches/branch-protection)
 
-## 🤝 Contributing
-
-This is a personal dotfiles repository, but feel free to:
-- Fork for your own use
-- Suggest improvements via issues
-- Share your own dotfiles repo
-
 ## 📄 License
 
-MIT License - Feel free to use and modify
-
-## ⭐ Acknowledgments
-
-Inspired by dotfiles repositories from:
-- [mathiasbynens/dotfiles](https://github.com/mathiasbynens/dotfiles)
-- [holman/dotfiles](https://github.com/holman/dotfiles)
-- [paulirish/dotfiles](https://github.com/paulirish/dotfiles)
+MIT License - Personal use
 
 ---
 
