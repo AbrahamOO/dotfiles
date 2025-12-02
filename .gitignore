@@ -1,0 +1,39 @@
+# Never commit sensitive files
+**/.env
+**/.env.local
+**/.env.*.local
+**/secrets.yml
+**/credentials.json
+
+# SSH keys
+**/.ssh/
+**/id_rsa
+**/id_ed25519
+**/*.pem
+**/*.key
+
+# GitHub CLI auth (contains tokens)
+.config/gh/
+
+# OS files
+.DS_Store
+*~
+.Spotlight-V100
+.Trashes
+
+# Editor files
+*.swp
+*.swo
+*.swn
+*~
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.bak
+*.log
+
+# Personal notes (if you add them)
+notes/
+private/
